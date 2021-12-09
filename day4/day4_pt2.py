@@ -60,5 +60,6 @@ def get_game_score(winner):
 lines = open("day4_in.txt", "r").read().split("\n")
 draws, boards = construct_game_sim(lines)
 winner, draw = play_bingo(boards[1:], draws)
+
 print(get_game_score(winner) * int(draw))
 

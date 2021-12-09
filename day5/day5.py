@@ -31,8 +31,7 @@ def plot_lines(board, coords):
         elif(coord[2] == "H"):
             board = plot_horizontal_line(board, coord)
     return board
-            
-    
+              
 def plot_vertical_line(board, coords):
     coord1 = coords[0]
     coord2 = coords[1]
@@ -42,8 +41,7 @@ def plot_vertical_line(board, coords):
         coord1[1] = temp
     for i in range(coord1[1], coord2[1] + 1):
         board[i][coord1[0]] += 1      
-    return board
-    
+    return board  
         
 def plot_horizontal_line(board, coords):
     coord1 = coords[0]
@@ -64,15 +62,10 @@ def count_intersections(board):
                 count += 1
     return count
 
-
 lines = open("day5_in.txt", "r").read().split("\n")
-
 valid_coords = get_valid_coords(lines)
-
-#print(valid_coords)
-
 final_board = plot_lines(init_board(), valid_coords)
-#print(final_board)
+
 print(count_intersections(final_board))
 
         
