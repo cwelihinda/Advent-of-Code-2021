@@ -1,14 +1,38 @@
 fish = open("day6_in.txt", "r").read().split(",")
-for i in range(256):
-    print("DAY " + str(i))
-    next_gen = []
-    new_fish = []
+
+def fish_to_buckets(fish):
+    buckets = [0 for j in range(9)]
     for f in fish:
-        days_till_repro = int(f) - 1;
-        if(days_till_repro == -1):
-            days_till_repro = 6
-            new_fish.append(8)
-        next_gen.append(days_till_repro)
-    fish = next_gen + new_fish
-print(len(fish))
+        buckets[int(f)] += 1
+    return buckets
+
+def run_day(buckets):
+    new_day = [0 for j in range(len(buckets))]
+    for i in range(len(buckets)):
+        new_day[i - 1] = buckets[i]
+    new_day[6] += new_day[8]
+    return new_day
+
+def run_simulation(days, buckets):  
+    for i in range(days):
+        print("DAY " + str(i))
+        buckets = run_day(buckets)
+    return buckets
+
+def count_buckets(buckets):
+    count = 0
+    for i in range(len(buckets)):
+        count += buckets[i]
+    return count
+
+
+buckets = fish_to_buckets(fish)
+
+eighty = run_simulation(80, buckets)
+
+print(count_buckets(eighty))
+
+final_buckets = run_simulation(256, buckets)
+
+print(count_buckets(final_buckets))
         
