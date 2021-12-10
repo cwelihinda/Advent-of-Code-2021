@@ -16,7 +16,6 @@ def check_left(grid, row, col):
 def check_right(grid, row, col):
     if ((col + 1) >= len(grid[row])):
         return True
-    
     right = int(grid[row][col + 1])
     if(right > int(grid[row][col])):
         return True
