@@ -14,7 +14,6 @@ def get_six(candidates, one):
         temp = candidate
         for char in one:
             temp = temp.replace(char, "")
-        
         if(len(temp) == 5):
             final = candidate
         else:    
@@ -28,7 +27,6 @@ def get_three(candidates, one):
         temp = candidate
         for char in one:
             temp = temp.replace(char, "")
-        
         if(len(temp) == 3):
             final = candidate
         else:
@@ -42,7 +40,6 @@ def magic_method_it_was_duplicated_at_refactor(candidates, three):
         temp = candidate
         for char in three:
             temp = temp.replace(char, "")
-        
         if(len(temp) == 1):
             final = candidate
         else:
@@ -69,8 +66,8 @@ def decode(lines):
                 length_6.append(clue)
             elif(length == 7):
                 rules[8] = clue
+        rules[3], length_5 = get_three(length_5, rules[1])    
         rules[6], length_6 = get_six(length_6, rules[1])
-        rules[3], length_5 = get_three(length_5, rules[1])
         rules[9], rules[0] = magic_method_it_was_duplicated_at_refactor(length_6, rules[3])
         rules[2], rules[5] = magic_method_it_was_duplicated_at_refactor(length_5, rules[6])
         
